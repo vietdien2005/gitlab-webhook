@@ -1,0 +1,12 @@
+[Unit]
+Description=Gitlab Webhook
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/gitlab_webhook/
+ExecStart=webhook.py --port 8989 --config /opt/gitlab_webhook/config.yaml
+
+[Install]
+WantedBy=multi-user.target

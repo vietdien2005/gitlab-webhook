@@ -1,0 +1,6 @@
+---
+project/gitlab-repo:
+  gitlab_token: your-token
+  telegram_bot: your-telegram-bot-token
+  telegram_group: your-telegram-group-id
+  telegram_template: ./templates/your-template.jinja

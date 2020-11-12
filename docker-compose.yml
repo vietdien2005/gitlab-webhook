@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  webhook:
+    container_name: gitlab_webhook
+    build:
+      context: ./
+    image: vietdien2005/gitlab_webhook:latest
+    volumes:
+      - ${PWD}/config.yaml:/workspace/config.yaml
+    ports:
+      - "8989:8989"
