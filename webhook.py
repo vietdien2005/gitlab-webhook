@@ -86,7 +86,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             project = json_params['project_name']
             logging.info("webhook received project '%s'", project)
         except KeyError as err:
-            self.send_response(500, "KeyError")
+            self.send_response(500, "ProjectError")
             logging.error("No project provided by the JSON payload")
             self.end_headers()
             return
