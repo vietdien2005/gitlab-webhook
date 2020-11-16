@@ -13,6 +13,7 @@ import logging
 import os
 from jinja2 import Environment, FileSystemLoader
 import requests
+from urllib.parse import urlparse
 
 
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s',
@@ -83,7 +84,8 @@ class RequestHandler(BaseHTTPRequestHandler):
             json_params = json.loads(json_payload.decode('utf-8'))
 
         try:
-            project = json_params['project_name']
+            repo_parse = urlparse(json_params['repository']['homepage'])
+            project = repo_parse.path[1:]
             logging.info("webhook received project '%s'", project)
         except KeyError as err:
             self.send_response(500, "ProjectError")
